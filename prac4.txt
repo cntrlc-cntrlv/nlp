@@ -1,0 +1,25 @@
+import nltk
+from nltk.corpus import wordnet
+
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+def describe_word(word):
+    synsets = wordnet.synsets(word)
+
+    synonyms = {lemma.name() for syn in synsets for lemma in syn.lemmas()}
+
+    antonyms = {ant.name() for syn in synsets for lemma in syn.lemmas() for ant in lemma.antonyms()}
+
+    hypernyms = {hyp.name().split('.')[0] for syn in synsets for hyp in syn.hypernyms()}
+
+    hyponyms = {hypo.name().split('.')[0] for syn in synsets for hypo in syn.hyponyms()}
+
+    print(f"Word: {word}")
+    print(f"Synonyms: {', '.join(synonyms)}")
+    print(f"Antonyms: {', '.join(antonyms)}")
+    print(f"Hypernyms: {', '.join(hypernyms)}")
+    print(f"Hyponyms: {', '.join(hyponyms)}")
+
+describe_word("car")
+describe_word("happy")

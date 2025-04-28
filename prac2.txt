@@ -1,0 +1,8 @@
+words = ['walk','talk']
+
+add_suffix = [word + 'ed' for word in words]
+print(add_suffix)
+
+inflected_word = ['walking', 'talking']
+base_word = [word[:-3] for word in inflected_word]
+print(base_word)

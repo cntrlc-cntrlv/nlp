@@ -1,0 +1,16 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.probability import FreqDist
+from nltk import ngrams
+
+nltk.download('punkt_tab')
+
+text = "we will we will rock you rock you"
+tokens = word_tokenize(text)
+
+bigram_list = list(ngrams(tokens, 2))
+bigram_freq = FreqDist(bigram_list)
+
+# Display bigrams with their frequency
+for bigram, frequency in bigram_freq.items():
+    print(bigram, ":", frequency)
